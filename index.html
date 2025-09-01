@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Vedanta - Civil Services & Academic Excellence</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-orange: #f97316;
+            --secondary-blue: #3b82f6;
+            --light-blue: #dbeafe;
+            --light-orange: #fed7aa;
+            --white: #ffffff;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            padding: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-orange) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        /* Subjects Grid */
+        a{
+            font-weight: bold;
+        }
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-orange);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subject-card .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .chapters-list {
+            margin-top: 1rem;
+        }
+
+        .chapters-list h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .chapter-item {
+            background: var(--gray-100);
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-orange);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-item:hover {
+            background: var(--light-orange);
+            transform: translateX(5px);
+        }
+
+        .coming-soon {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--gray-100);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--light-blue);
+        }
+
+        .feature-item .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Add content placeholder styling */
+        .content-placeholder {
+            background: var(--light-blue);
+            border: 2px dashed var(--primary-blue);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: var(--primary-blue);
+            font-style: italic;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="round logo.png" alt="Edu Vedanta Logo">
+                <span>Edu Vedanta</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content fade-in">
+                <h1>Edu Vedanta</h1>
+                <p>Your Gateway to Civil Services Excellence & Academic Success</p>
+                <p>Specialized in UPSC, APSC & Competitive Exam Preparation | NCERT-Based Learning</p>
+                <div class="cta-buttons">
+                    <a href="https://www.youtube.com/@EDUVEDANTA" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-youtube"></i> Watch Lessons
+                    </a>
+                    <a href="#subjects" class="btn btn-secondary">
+                        <i class="fas fa-book"></i> Explore Subjects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="subjects">
+            <div class="container">
+                <h2>Learning Resources</h2>
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Science Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            Science
+                        </h3>
+                        <p>NCERT-based science lessons covering Physics, Chemistry, and Biology for competitive exam preparation.</p>
+                        <div class="chapters-list">
+                            <h4>Chapters Available:</h4>
+                            <div class="content-placeholder">
+                                <i class="fas fa-plus-circle"></i>
+                                <p>CHAPTERS:</p>
+                                <small><a href="Science/Light.pdf" target="_blank">1. LIGHT</a></small>
+                                <br><small><a href="Science/Electricity.pdf" target="_blank"> 2. ELECTRICITY</a></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mathematics Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            Mathematics
+                        </h3>
+                        <p>Comprehensive mathematics coverage for competitive exams with step-by-step solutions.</p>
+                        <div class="chapters-list">
+                            <h4>Chapters:</h4>
+                            <div class="content-placeholder">
+                                <i class="fas fa-plus-circle"></i>
+                                <p>CHAPTERS:</p>
+                                <small>Contents coming up soon</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-monument"></i>
+                            </div>
+                            History
+                        </h3>
+                        <p>Indian and World History covering ancient, medieval, and modern periods.</p>
+                        <div class="coming-soon">
+                            <i class="fas fa-clock"></i>
+                            <p>Coming Soon - History chapters will be added here</p>
+                        </div>
+                    </div>
+
+                    <!-- Geography Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            Geography
+                        </h3>
+                        <p>Physical and Human Geography with maps and current geographical developments.</p>
+                        <div class="coming-soon">
+                            <i class="fas fa-clock"></i>
+                            <p>Coming Soon - Geography content in development</p>
+                        </div>
+                    </div>
+
+                    <!-- Polity Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            Indian Polity
+                        </h3>
+                        <p>Constitutional framework, governance, and political systems for UPSC preparation.</p>
+                        <div class="coming-soon">
+                            <i class="fas fa-clock"></i>
+                            <p>Coming Soon - Polity lessons coming up</p>
+                        </div>
+                    </div>
+
+                    <!-- Economics Subject Card -->
+                    <div class="subject-card fade-in">
+                        <h3>
+                            <div class="icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            Economics
+                        </h3>
+                        <p>Micro and Macroeconomics, Indian Economy, and current economic affairs.</p>
+                        <div class="coming-soon">
+                            <i class="fas fa-clock"></i>
+                            <p>Coming Soon - Economics content in pipeline</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-placeholder" style="margin-top: 2rem;">
+                    <h3><i class="fas fa-info-circle"></i> Visit Our Other Site</h3>
+                    <p>Eduvedanta-Capitals & Currencies:</p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li><a href="https://eduvedanta-capitals.tiiny.site" target="_blank">eduvedanta-capitals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2>About Edu Vedanta</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: var(--gray-600);">
+                    Our channel is dedicated to helping aspirants prepare for Civil Services Examinations like UPSC, APSC, and other competitive exams. We specialize in breaking down complex topics into simple, easy-to-understand lessons.
+                </p>
+                
+                <div class="about-grid">
+                    <div class="feature-item fade-in">
+                        <div class="icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Complete Syllabus</h3>
+                        <p>Comprehensive coverage of UPSC and APSC syllabus with structured learning paths</p>
+                    </div>
+                    
+                    <div class="feature-item fade-in">
+                        <div class="icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>NCERT Foundation</h3>
+                        <p>Strong foundational learning based on NCERT materials for building clear concepts</p>
+                    </div>
+                    
+                    <div class="feature-item fade-in">
+                        <div class="icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Smart Strategies</h3>
+                        <p>Effective exam preparation strategies and tips for optimal performance</p>
+                    </div>
+                    
+                    <div class="feature-item fade-in">
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Expert Guidance</h3>
+                        <p>Professional guidance for both civil services and general academic excellence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <div class="container">
+                <h2>Connect With Us</h2>
+                <p>Follow us on social media for daily updates, tips, and exclusive content</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@EDUVEDANTA" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        YouTube Channel
+                    </a>
+                    <a href="https://rb.gy/5nb08w" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+                    <a href="https://rb.gy/9qxwwn" class="social-link" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                        Facebook
+                    </a>
+                    <a href="https://rb.gy/5xm5x9" class="social-link" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9737302288</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sixmile, Guwahati, Assam - 781022</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Subjects We Cover</h3>
+                    <ul style="list-style: none;">
+                        <li>• Indian Polity & Constitution</li>
+                        <li>• Modern Indian History</li>
+                        <li>• Geography & Environment</li>
+                        <li>• Economics & Current Affairs</li>
+                        <li>• Science & Mathematics</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Exam Preparation</h3>
+                    <ul style="list-style: none;">
+                        <li>• UPSC Civil Services</li>
+                        <li>• APSC Preparation</li>
+                        <li>• State PSC Exams</li>
+                        <li>• School Level Academics</li>
+                        <li>• NCERT Based Learning</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid var(--secondary-blue); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 Edu Vedanta. All rights reserved. | Empowering minds for excellence in competitive exams.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu after clicking
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should fade in
+        document.querySelectorAll('.subject-card, .feature-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Example data structure for future content management
+        const subjectsData = {
+            science: {
+                title: "Science",
+                icon: "fas fa-atom",
+                description: "NCERT-based science lessons covering Physics, Chemistry, and Biology",
+                chapters: [
+                    // Add your chapters here like:
+                    // { title: "Chapter 1: Light", link: "https://youtube.com/watch?v=..." },
+                    // { title: "Chapter 2: Acids and Bases", link: "https://youtube.com/watch?v=..." }
+                ]
+            },
+            mathematics: {
+                title: "Mathematics",
+                icon: "fas fa-calculator", 
+                description: "Comprehensive mathematics coverage for competitive exams",
+                chapters: [
+                    // Add mathematics chapters here
+                ]
+            }
+            // Add more subjects as needed
+        };
+
+        // Function to dynamically render subjects (for future use)
+        function renderSubjects() {
+            // This function can be used to dynamically update content
+            // when you add chapters to the subjectsData object
+            console.log('Subjects data structure ready for content:', subjectsData);
+        }
+
+        // Initialize
+        renderSubjects();
+    </script>
+</body>
+</html>
